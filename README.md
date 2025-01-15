@@ -36,3 +36,9 @@ END_TEST
 
 RUN_ALL_TESTS
 ```
+
+
+# TODOs
+- [ ] Add more assert macros
+    - [ ] ASSERT_EQ, ASSERT_NE, ASSERT_GT, ASSERT_LT etc.
+- [ ] Add more clear errors
