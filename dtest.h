@@ -3,7 +3,32 @@
 #include <functional>
 
 // Define macros for test registration and execution
-#define TEST_AND_PRINT(expr, expected) \
+#define ASSERT(expr) \
+    do { \
+        auto result = (expr); \
+        ++testCount; \
+        if (true == result) { \
+            passCount++; \
+            std::cout << "\x1B[32m[PASSED] " << #expr << "\033[0m" << std::endl; \
+        } else { \
+            std::cout << "\x1B[31m[FAILED] " << #expr << "\033[0m" << std::endl; \
+        } \
+    } while (0)
+
+#define ASSERT_NE(expr, expected) \
+    do { \
+        auto result = (expr); \
+        ++testCount; \
+        if ((expected) != result) { \
+            passCount++; \
+            std::cout << "\x1B[32m[PASSED] " << #expr << " != " << expected << "\033[0m" << std::endl; \
+        } else { \
+            std::cout << "\x1B[31m[FAILED] " << #expr << " = " << result << " (Not Expected: " << expected << ") \033[0m" << std::endl; \
+        } \
+    } while (0)
+
+
+#define ASSERT_EQ(expr, expected) \
     do { \
         auto result = (expr); \
         ++testCount; \
